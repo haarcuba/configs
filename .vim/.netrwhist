@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/yoav/work/mom'
+let g:netrw_dirhist_2='/home/yoav/work/dancestudio/studiolux/app/models'
+let g:netrw_dirhist_3='/home/yoav'
+let g:netrw_dirhist_4='/home/yoav/work/dancestudio/studiolux'
+let g:netrw_dirhist_5='/home/yoav/work/dancestudio/studiolux/log'
