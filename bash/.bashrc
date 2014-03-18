@@ -97,8 +97,18 @@ fi
 # NOW STARTS MY OLD .bashrc FILE
 
 _setPrompt() {
-	prompt='\u@\h $(python ~/programs/bin/prompt.py)$ '
-	color='\[\e[35;1m\]'
+	DARK_GRAY=30
+	RED=31
+	GREEN=32
+	YELLOW=33
+	NAVY_BLUE=34
+	MAGENTA=35
+	CYAN=36
+	WHITE=37
+	LIGHT_WHITE=38
+
+	prompt='\u@\h \W $ '
+	color="\[\e[$NAVY_BLUE;1m\]"
 	resetColor='\[\e[0m\]'
 	export PS1="$color$prompt$resetColor"
 }
@@ -134,10 +144,6 @@ _disableTouchpadTap() {
 	disable_touchpad_tap.sh
 }
 
-_rubyEnvironment() {
-	source /home/yoav/.rvm/environments/default
-}
-
 _nginx() {
 	export PATH=/opt/nginx/sbin:$PATH
 }
@@ -151,7 +157,6 @@ _main() {
 	_setAliases
 	_configurePrograms
 	_disableTouchpadTap
-	_rubyEnvironment
 	_nginx
 	_enableCoreDumps
 	export EDITOR=vim
