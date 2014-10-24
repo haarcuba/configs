@@ -1,0 +1,4 @@
+\bind_file hemacs
+\bind_file yoav
+\bind "M-L" "language english"
+\bind "C-L" "language hebrew"

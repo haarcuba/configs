@@ -1,0 +1,3 @@
+# my bindings
+\bind "M-a"                     "depth-increment"
+\bind "M-z"                   "depth-decrement"

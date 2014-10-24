@@ -1,0 +1,81 @@
+# LyX 2.0.6 generated this file. If you want to make your own
+# modifications you should do them from inside LyX and save.
+
+Format 1
+
+\bind_file "hebrew"
+
+#
+# MISC SECTION ######################################
+#
+
+\user_name "yoav,,,"
+\user_email ""
+
+#
+# SCREEN & FONTS SECTION ############################
+#
+
+\screen_font_sizes 5 7 8 9 10 12 14.4 17.260000000000002 20.739999999999998 24.879999999999999
+\single_instance false
+
+#
+# COLOR SECTION ###################################
+#
+
+\set_color "background" "#065548"
+\set_color "foreground" "#ffeb06"
+\set_color "notebg" "#00007f"
+\set_color "math" "#ffffff"
+\set_color "mathbg" "#5d008c"
+\set_color "mathline" "#00ffff"
+
+#
+# PRINTER SECTION ###################################
+#
+
+
+#
+# TEX SECTION #######################################
+#
+
+
+#
+# FILE SECTION ######################################
+#
+
+
+#
+# PLAIN TEXT EXPORT SECTION ##############################
+#
+
+
+#
+# SPELLCHECKER SECTION ##############################
+#
+
+
+#
+# LANGUAGE SUPPORT SECTION ##########################
+#
+
+
+#
+# 2nd MISC SUPPORT SECTION ##########################
+#
+
+
+#
+# FORMATS SECTION ##########################
+#
+
+
+#
+# CONVERTERS SECTION ##########################
+#
+
+
+#
+# COPIERS SECTION ##########################
+#
+
