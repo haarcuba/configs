@@ -96,6 +96,15 @@ fi
 
 # NOW STARTS MY OLD .bashrc FILE
 
+__git() {
+	branch=$(git branch 2> /dev/null | awk '/\*/ {print $2}')
+	if [[ -z "$branch" ]]; then
+		echo -n ""
+	else
+		echo " |$branch|"
+	fi
+}
+
 _setPrompt() {
 	DARK_GRAY=30
 	RED=31
@@ -107,10 +116,11 @@ _setPrompt() {
 	WHITE=37
 	LIGHT_WHITE=38
 
-	prompt='\u@\h \W $ '
+	prompt='\u@\h \W'
 	color="\[\e[$NAVY_BLUE;1m\]"
 	resetColor='\[\e[0m\]'
-	export PS1="$color$prompt$resetColor"
+	git="\[\e[$YELLOW;1m\]"'$(__git)'
+	export PS1="$color$prompt$git$resetColor \$ "
 }
 
 _setAliases() {
