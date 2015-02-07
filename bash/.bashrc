@@ -141,6 +141,7 @@ _setAliases() {
 	alias ssh_hector='ssh -p 8429 -l TheShlomp liveuC'
 	alias liveutrac='ssh -p 8429 -l TheShlomp -N -f -L 8000:10.10.10.101:8000 liveuC'
 	alias mplayer='mplayer -ao sdl'
+	alias mc='mc -S /usr/share/mc/skins/dark.ini'
 }
 
 _configurePrograms() {
