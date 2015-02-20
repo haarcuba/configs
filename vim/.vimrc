@@ -35,3 +35,4 @@ set number
 set grepprg=ack-grep\ --nogroup\ --column\ $*
 set grepformat=%f:%l:%c:%m
 set expandtab
+execute pathogen#infect()
