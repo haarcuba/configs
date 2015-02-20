@@ -34,3 +34,4 @@ map <C-K> :cp<CR>
 set number
 set grepprg=ack-grep\ --nogroup\ --column\ $*
 set grepformat=%f:%l:%c:%m
+set expandtab
