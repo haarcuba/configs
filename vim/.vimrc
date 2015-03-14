@@ -6,6 +6,7 @@ Bundle 'jlanzarotta/bufexplorer'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/paredit.vim'
+Bundle 'Lokaltog/vim-easymotion'
 version 6.0
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
