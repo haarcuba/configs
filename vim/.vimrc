@@ -2,11 +2,11 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'jlanzarotta/bufexplorer'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'vim-scripts/paredit.vim'
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-scripts/paredit.vim'
+Plugin 'tpope/vim-fugitive'
 version 6.0
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
@@ -43,4 +43,5 @@ set number
 set grepprg=ack\ --nogroup\ --column\ $*
 set grepformat=%f:%l:%c:%m
 set expandtab
+set laststatus=2
 filetype plugin indent on
