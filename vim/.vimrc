@@ -8,6 +8,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/paredit.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'nvie/vim-flake8'
 version 6.0
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
