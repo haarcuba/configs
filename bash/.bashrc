@@ -128,19 +128,8 @@ _setAliases() {
 	alias ll='ls -l'
 	alias ltr='ls -ltr'
 	alias lt='ls -lt'
-	alias rterm="xterm -bg darkred -T 'Root Terminal'"
-	alias octterm='xterm -bg DarkOliveGreen -fg Ivory -T OCTAVE'
-	alias simterm='xterm -bg black -fg "#00AAFF"'
 	alias ssh='/usr/bin/ssh -X'
-	alias ssh_gp='ssh -f kleinber@gp.tau.ac.il xterm -bg Black -fg DeepSkyBlue -fn 8x13bold -T gp'
-	alias ssh_tamar='ssh siuss@server4.namecheaphosting.com -p65321'
-	alias ps2pdf='ps2pdf14 -r35000'
-	alias firefox='firefox >& /dev/null'
-	alias xdvi='xdvi -expertmode 31'
-	alias xfig='xfig -specialtext -latexfonts'
-	alias ssh_hector='ssh -p 8429 -l TheShlomp liveuC'
-	alias liveutrac='ssh -p 8429 -l TheShlomp -N -f -L 8000:10.10.10.101:8000 liveuC'
-	alias mplayer='mplayer -ao sdl'
+	#alias mplayer='mplayer -ao sdl'
 	alias mc='mc -S /usr/share/mc/skins/dark.ini'
 }
 
