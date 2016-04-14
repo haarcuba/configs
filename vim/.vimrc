@@ -7,6 +7,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/paredit.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fireplace'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'nvie/vim-flake8'
 version 6.0
@@ -38,7 +39,6 @@ set tabstop=4
 set shiftwidth=4
 set hlsearch
 set smartindent
-set makeprg=jam
 map <C-J> :cn<CR>
 map <C-K> :cp<CR>
 set number
