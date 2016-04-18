@@ -1,20 +1,24 @@
 #!/bin/sh
 
+TOP=$PWD
 #bash
-cd ~
-mkdir work
-cd work
-git clone git@bitbucket.org:haarcuba/vimconfig.git
-cp vimconfig/bash/.bashrc ~/
-sudo cp vimconfig/bash/root.bashrc /root/.bashrc
+cp bash/.bashrc ~/
+sudo cp bash/root.bashrc /root/.bashrc
 
 #terminator
 cd ~
 mkdir .config/terminator
-cp ~/work/vimconfig/terminator/config ~/.config/terminator/config
+cp $TOP/terminator/config ~/.config/terminator/config
 
 #vim
-cp ~/work/vimconfig/vim/.vimrc ~/
+cp $TOP/vim/.vimrc ~/
 mkdir ~/.vim
-cp -af ~/work/vimconfig/vim/.vim/colors ~/.vim
+cp -af $TOP/vim/.vim/colors ~/.vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle
+
+
+#tmux
+cd $TOP
+mkdir -p ~/.tmux/plugins/tpm
+wget -O- https://github.com/tmux-plugins/tpm/archive/v3.0.0.tar.gz | tar --strip-components=1 -C ~/.tmux/plugins/tpm -zx
+cp tmux/.tmux.conf ~/
