@@ -22,3 +22,5 @@ cd $TOP
 mkdir -p ~/.tmux/plugins/tpm
 wget -O- https://github.com/tmux-plugins/tpm/archive/v3.0.0.tar.gz | tar --strip-components=1 -C ~/.tmux/plugins/tpm -zx
 cp tmux/.tmux.conf ~/
+
+pip3 install boto3 ipython
