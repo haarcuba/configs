@@ -6,22 +6,22 @@ packages:
 	sudo aptitude safe-upgrade -y
 	sudo aptitude install vim-gtk build-essential terminator htop mc ipython openssh-server tmux python3-pip -y
 
-sudo:
+config-sudo:
 	sudo bash -c 'printf "%sudo\tALL=(ALL)\tNOPASSWD: ALL\n" >> /etc/sudoers'
 
-bash:
+config-bash:
 	cp bash/.bashrc ~/
 	sudo cp bash/root.bashrc /root/.bashrc
 
-terminator:
+config-terminator:
 	mkdir -p ~/.config/terminator
 	cp terminator/config ~/.config/terminator/config
 
-vim:
+config-vim:
 	cp vim/.vimrc ~/
 	mkdir ~/.vim
 	cp -af vim/.vim/colors ~/.vim
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle
 
-tmux:
+config-tmux:
 	cp tmux/.tmux.conf ~/
