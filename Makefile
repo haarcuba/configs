@@ -4,7 +4,7 @@ packages:
 	sudo apt-get install aptitude
 	sudo aptitude update
 	sudo aptitude safe-upgrade -y
-	sudo apt install vim-gtk build-essential terminator htop mc ipython openssh-server tmux python3-pip
+	sudo aptitude install vim-gtk build-essential terminator htop mc ipython openssh-server tmux python3-pip -y
 
 sudo:
 	sudo bash -c 'printf "%sudo\tALL=(ALL)\tNOPASSWD: ALL\n" >> /etc/sudoers'
