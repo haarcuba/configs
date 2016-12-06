@@ -8,7 +8,7 @@ packages:
 	sudo aptitude install vim-gtk build-essential terminator htop mc ipython openssh-server tmux python3-pip -y
 
 sudo:
-	sudo bash -c 'printf "%sudo\tALL=(ALL)\tNOPASSWD: ALL\n" >> /etc/sudoers'
+	sudo bash -c 'printf "%%sudo\tALL=(ALL)\tNOPASSWD: ALL\n" >> /etc/sudoers'
 
 bash:
 	cp bash/.bashrc ~/
