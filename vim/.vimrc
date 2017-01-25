@@ -1,5 +1,7 @@
 set nocompatible
 filetype off
+set path+=**
+set wildmenu
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Plugin 'jlanzarotta/bufexplorer'
@@ -18,6 +20,7 @@ Plugin 'python-mode/python-mode'
 let g:pymode_options_max_line_length=200
 let g:pymode_folding=0
 let g:pymode_lint_on_fly = 0
+let g:pymode_lint_on_write = 0
 let g:pymode_lint_checkers = ['pyflakes']
 let g:pymode_rope = 0
 
