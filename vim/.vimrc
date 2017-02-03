@@ -1,6 +1,5 @@
 set nocompatible
 filetype off
-set path+=**
 set wildmenu
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -56,6 +55,7 @@ set smartindent
 map <C-J> :cn<CR>
 map <C-K> :cp<CR>
 set number
+set relativenumber
 set grepprg=ack-grep\ --nogroup\ --column\ $*
 set grepformat=%f:%l:%c:%m
 set expandtab
