@@ -12,6 +12,7 @@ Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-fugitive'
 Plugin 'https://github.com/kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-surround'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'nvie/vim-flake8'
 
