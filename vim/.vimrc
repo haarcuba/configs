@@ -15,6 +15,8 @@ Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-surround'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'nvie/vim-flake8'
+Plugin '907th/vim-auto-save'
+let g:auto_save = 1
 
 Plugin 'python-mode/python-mode'
 let g:pymode_options_max_line_length=200
