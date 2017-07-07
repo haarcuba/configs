@@ -64,3 +64,4 @@ set grepformat=%f:%l:%c:%m
 set expandtab
 set laststatus=2
 filetype plugin indent on
+:inoremap jj <Esc>
