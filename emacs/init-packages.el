@@ -5,7 +5,7 @@
              '("melpa" . "https://melpa.org/packages/") t)
 
 (setq package-list
-      '(evil evil-numbers evil-matchit evil-exchange ace-jump-mode))
+      '(evil evil-numbers evil-matchit evil-exchange ace-jump-mode magit))
 
 
 (package-initialize) ;; You might already have this line

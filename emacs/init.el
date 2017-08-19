@@ -36,7 +36,6 @@
 
 
 (global-evil-matchit-mode 1)
-(global-evil-leader-mode)
 (global-linum-mode 1)
 
 
