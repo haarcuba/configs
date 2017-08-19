@@ -15,28 +15,29 @@
  ;; If there is more than one, they won't work right.
  )
 
-(require 'package) ;; You might already have this line
+(load "~/.emacs.d/init-packages")
 
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize) ;; You might already have this line
+
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+
+
 (require 'evil)
 (require 'evil-numbers)
 (evil-mode 1)
-(evil-commentary-mode)
+;; (evil-commentary-mode)
 (require 'evil-matchit)
-(global-evil-matchit-mode 1)
 
 
 
 (require 'evil-exchange)
 (evil-exchange-install)
 
-(require 'ace-jump-mode)
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
-
+(global-evil-matchit-mode 1)
 (global-evil-leader-mode)
-(evil-leader/set-leader ",")
-
 (global-linum-mode 1)
+
+
+
