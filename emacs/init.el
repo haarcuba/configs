@@ -24,3 +24,19 @@
 (require 'evil-numbers)
 (evil-mode 1)
 (evil-commentary-mode)
+(require 'evil-matchit)
+(global-evil-matchit-mode 1)
+
+
+
+(require 'evil-exchange)
+(evil-exchange-install)
+
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+
+(global-evil-leader-mode)
+(evil-leader/set-leader ",")
+
+(global-linum-mode 1)
