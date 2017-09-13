@@ -16,6 +16,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'nvie/vim-flake8'
 Plugin '907th/vim-auto-save'
+Plugin 'vim-scripts/matchit.zip'
 let g:auto_save = 1
 
 Plugin 'python-mode/python-mode'
@@ -63,5 +64,6 @@ set grepprg=ack-grep\ --nogroup\ --column\ $*
 set grepformat=%f:%l:%c:%m
 set expandtab
 set laststatus=2
+set noswapfile
 filetype plugin indent on
 :inoremap jj <Esc>
