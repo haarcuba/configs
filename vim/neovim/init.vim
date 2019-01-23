@@ -14,9 +14,10 @@ set guicursor=
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'vim-syntastic/syntastic'
 Plug 'vim-scripts/vim-auto-save'
+Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 "set statusline+=%#warningmsg#
