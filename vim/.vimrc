@@ -1,32 +1,15 @@
 set nocompatible
 filetype off
 set wildmenu
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-scripts/paredit.vim'
-Plugin 'vim-scripts/mako.vim'
-Plugin 'guns/vim-clojure-static'
-Plugin 'tpope/vim-fugitive'
-Plugin 'https://github.com/kien/rainbow_parentheses.vim'
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-surround'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'nvie/vim-flake8'
-Plugin '907th/vim-auto-save'
-Plugin 'vim-scripts/matchit.zip'
-let g:auto_save = 1
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'jlanzarotta/bufexplorer'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
+Plug '907th/vim-auto-save'
+call plug#end()
 
-Plugin 'python-mode/python-mode'
-let g:pymode_options_max_line_length=200
-let g:pymode_folding=0
-let g:pymode_lint_on_fly = 0
-let g:pymode_lint_ignore = "W0611,W0401"
-let g:pymode_lint_on_write = 0
-let g:pymode_lint_checkers = ['pyflakes']
-let g:pymode_rope = 0
 
 version 6.0
 if &cp | set nocp | endif
