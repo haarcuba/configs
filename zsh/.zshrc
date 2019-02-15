@@ -104,6 +104,7 @@ source $ZSH/oh-my-zsh.sh
 alias mc='mc -S /usr/share/mc/skins/dark.ini'
 alias ltr='ls -ltr'
 alias vim='nvim'
+alias vi='nvim'
 export PATH=$PATH:$HOME/programs/bin
 export PATH=~/go/bin:$PATH
 
