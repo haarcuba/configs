@@ -1,5 +1,5 @@
 all: packages sudo bash vim tmux
-.PHONY: packages sudo bash vim tmux
+.PHONY: packages sudo bash vim tmux zsh
 
 packages:
 	sudo apt install vim-gtk neovim build-essential htop mc openssh-server tmux python3-pip arandr netcat-openbsd
@@ -8,7 +8,7 @@ sudo:
 	sudo bash -c 'printf "%%sudo\tALL=(ALL)\tNOPASSWD: ALL\n" >> /etc/sudoers'
 
 zsh:
-	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 	cp zsh/.zshrc ~/
 
 bash:
