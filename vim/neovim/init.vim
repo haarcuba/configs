@@ -26,6 +26,8 @@ call plug#end()
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
 
+"map <C-J> :cn<CR>
+"map <C-K> :cp<CR>
 :inoremap jj <Esc>
 let g:auto_save = 1  " enable AutoSave on Vim startup
 colorscheme darkblue
