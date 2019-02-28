@@ -4,6 +4,9 @@ all: packages sudo bash vim tmux
 packages:
 	sudo apt install vim-gtk neovim build-essential htop mc openssh-server tmux python3-pip arandr netcat-openbsd zsh ctags
 
+lab:
+	sudo cp lab/lab /usr/local/bin/lab
+
 sudo:
 	sudo bash -c 'printf "%%sudo\tALL=(ALL)\tNOPASSWD: ALL\n" >> /etc/sudoers'
 
