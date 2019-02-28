@@ -117,7 +117,11 @@ _fixDisplay() {
     export DISPLAY=:0.0
 }
 
-loadVirtualEnvironment() {
+_loadVirtualEnvironment() {
      source ~/venvs/${PWD:t}_python/bin/activate
 }
 
+_configureGitHaarcuba() {
+    git config user.email haarcuba@gmail.com
+    git config user.name "Yoav Kleinberger"
+}

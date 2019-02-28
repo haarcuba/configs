@@ -13,6 +13,7 @@ set expandtab
 set guicursor=
 
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'jlanzarotta/bufexplorer'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
