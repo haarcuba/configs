@@ -2,7 +2,7 @@ all: packages sudo bash vim tmux
 .PHONY: packages sudo bash vim tmux zsh
 
 packages:
-	sudo apt install vim-gtk neovim build-essential htop mc openssh-server tmux python3-pip arandr netcat-openbsd
+	sudo apt install vim-gtk neovim build-essential htop mc openssh-server tmux python3-pip arandr netcat-openbsd zsh ctags
 
 sudo:
 	sudo bash -c 'printf "%%sudo\tALL=(ALL)\tNOPASSWD: ALL\n" >> /etc/sudoers'
