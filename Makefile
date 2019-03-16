@@ -30,5 +30,8 @@ vim:
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	cp -af vim/.vim/colors ~/.vim
 
+cinnamon:
+	dconf load /org/cinnamon < ./cinnamon.dconf
+
 tmux:
 	cp tmux/.tmux.conf ~/
