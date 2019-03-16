@@ -1,0 +1,60 @@
+[settings-daemon/peripherals/touchpad]
+motion-threshold=1
+
+[settings-daemon/peripherals/keyboard]
+repeat-interval=uint32 30
+delay=uint32 500
+numlock-state='off'
+
+[settings-daemon/peripherals/mouse]
+drag-threshold=8
+motion-threshold=1
+double-click=400
+left-handed=false
+
+[/]
+alttab-switcher-delay=100
+command-history=[]
+enabled-applets=['panel1:right:0:systray@cinnamon.org:0', 'panel1:left:0:menu@cinnamon.org:1', 'panel1:left:1:show-desktop@cinnamon.org:2', 'panel1:left:2:panel-launchers@cinnamon.org:3', 'panel1:left:3:window-list@cinnamon.org:4', 'panel1:right:1:keyboard@cinnamon.org:5', 'panel1:right:2:notifications@cinnamon.org:6', 'panel1:right:3:removable-drives@cinnamon.org:7', 'panel1:right:4:user@cinnamon.org:8', 'panel1:right:5:network@cinnamon.org:9', 'panel1:right:6:bluetooth@cinnamon.org:10', 'panel1:right:7:power@cinnamon.org:11', 'panel1:right:8:calendar@cinnamon.org:12', 'panel1:right:9:sound@cinnamon.org:13']
+next-applet-id=14
+enabled-desklets=@as []
+panel-launchers=['DEPRECATED']
+
+[muffin]
+resize-threshold=24
+
+[desktop/a11y/applications]
+screen-keyboard-enabled=false
+screen-reader-enabled=false
+
+[desktop/a11y/mouse]
+secondary-click-enabled=false
+secondary-click-time=1.2
+dwell-time=1.2
+dwell-threshold=10
+dwell-click-enabled=false
+
+[desktop/keybindings/media-keys]
+calculator=@as []
+
+[desktop/media-handling]
+autorun-x-content-start-app=['x-content/unix-software']
+autorun-x-content-ignore=@as []
+autorun-x-content-open-folder=@as []
+
+[desktop/screensaver]
+layout-group=0
+
+[desktop/interface]
+cursor-size=24
+cursor-blink-time=1200
+keyboard-layout-prefer-variant-names=false
+toolkit-accessibility=false
+
+[desktop/sound]
+event-sounds=false
+
+[desktop/wm/preferences]
+min-window-opacity=30
+focus-mode='mouse'
+theme='Radiance'
