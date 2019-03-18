@@ -13,12 +13,15 @@ set expandtab
 set guicursor=
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'jlanzarotta/bufexplorer'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/vim-auto-save'
+Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdcommenter'
+Plug 'leafgarland/typescript-vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 "set statusline+=%#warningmsg#
@@ -27,6 +30,7 @@ call plug#end()
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
 
+map <C-F> :Files<CR>
 map <C-J> :cn<CR>
 map <C-K> :cp<CR>
 :tnoremap <ESC> <C-\><C-n>
