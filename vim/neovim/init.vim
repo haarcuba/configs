@@ -22,7 +22,13 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'leafgarland/typescript-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
+
+let g:ycm_auto_trigger=0
+"let g:ycm_autoclose_preview_window_after_insertion=1
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_min_num_of_chars_for_completion=1000
 
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
@@ -36,4 +42,4 @@ map <C-K> :cp<CR>
 :tnoremap <ESC> <C-\><C-n>
 :inoremap jj <Esc>
 let g:auto_save = 1  " enable AutoSave on Vim startup
-colorscheme darkblue
+colorscheme desert
