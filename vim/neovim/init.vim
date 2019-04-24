@@ -37,6 +37,8 @@ let g:ycm_min_num_of_chars_for_completion=1000
 "let g:syntastic_auto_loc_list = 1
 
 map <C-F> :Files<CR>
+map <C-B> :Buffers<CR>
+map <C-L> :Lines<CR>
 map <C-J> :cn<CR>
 map <C-K> :cp<CR>
 :tnoremap <ESC> <C-\><C-n>
