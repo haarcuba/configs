@@ -1,8 +1,8 @@
-all: packages sudo bash vim tmux
-.PHONY: packages sudo bash vim tmux zsh
+all: packages bash neovim tmux lab zsh
+.PHONY: packages sudo bash vim tmux zsh lab
 
 packages:
-	sudo apt install vim-gtk neovim build-essential htop mc openssh-server tmux python3-pip arandr netcat-openbsd zsh ctags
+	sudo apt install vim-gtk neovim build-essential htop mc openssh-server tmux arandr netcat-openbsd zsh ctags
 
 lab:
 	sudo cp lab/lab /usr/local/bin/lab
@@ -30,7 +30,7 @@ vim:
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	cp -af vim/.vim/colors ~/.vim
 
-cinnamon:
+cinnamon-config:
 	dconf load /org/cinnamon < ./cinnamon.dconf
 
 tmux:
