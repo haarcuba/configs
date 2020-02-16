@@ -23,7 +23,11 @@ Plug 'leafgarland/typescript-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Valloric/YouCompleteMe'
+Plug 'morhetz/gruvbox'
+Plug 'davidhalter/jedi-vim'
 call plug#end()
+
+let g:jedi#popup_on_dot=0
 
 let g:ycm_auto_trigger=0
 "let g:ycm_autoclose_preview_window_after_insertion=1
@@ -44,4 +48,4 @@ map <C-K> :cp<CR>
 :tnoremap <ESC> <C-\><C-n>
 :inoremap jj <Esc>
 let g:auto_save = 1  " enable AutoSave on Vim startup
-colorscheme desert
+colorscheme gruvbox
