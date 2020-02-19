@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import yaml
 import dryable
+import sys
 import pprint
 import subprocess
 import box
@@ -8,15 +9,35 @@ import argparse
 
 @dryable.Dryable()
 def run(command):
-    subprocess.run(command)
+    process = subprocess.run(command)
+    return process.returncode == 0
+
+def show(issue, file=sys.stdout):
+    pprint.pprint([issue.title, list(issue.labels), issue.milestone, f'{len(issue.text)} characters'], stream=file)
+
+def error(message):
+    print(message, file=sys.stderr)
+
+def verify_correctness(issue):
+    if not (set(issue.keys()) >= {'title', 'text', 'milestone', 'labels'}):
+        error(f'missing some fields for "{issue.title}"')
+        return False
+    if '/estimate' not in issue.text:
+        error(f'no time estimate for "{issue.title}"')
+        return False
+    if '"' in issue.text or '"' in issue.title:
+        error(f'cannot handle double quotes in "{issue.title}"')
+        return False
+    for key, value in issue.items():
+        if value is None:
+            error(f'{key} is None for "{issue.title}"')
+            return False
+
+    return True
 
 def create(issue, remote):
-    assert set(issue.keys()) >= {'title', 'text', 'milestone', 'labels'} 
-    assert '/estimate' in issue.text, f'no time estimate for "{issue.title}"'
-    assert '"' not in issue.text, f'cannot handle double quotes'
-    assert '"' not in issue.title, f'cannot handle double quotes'
-    for key, value in issue.items():
-        assert value is not None, f'got None for {key}'
+    if not verify_correctness(issue):
+        return False
     base = ['lab', 'issue', 'create', remote]
     lines = ['-m', issue.title]
 
@@ -29,9 +50,8 @@ def create(issue, remote):
 
 
     command = base + lines + milestone + labels
-    pprint.pprint([issue.title, list(issue.labels), issue.milestone, f'{len(issue.text)} characters'])
-    # print(f'creating: {issue.title}, labels: {issue.labels}, milestone: {issue.milestone}, {len(issue.text)} characters')
-    run(command)
+    show(issue)
+    return run(command)
 
 def main():
     parser = argparse.ArgumentParser()
@@ -41,15 +61,19 @@ def main():
     arguments = parser.parse_args()
     dryable.set(arguments.dry_run)
     issues = list(yaml.safe_load_all(open(arguments.yaml_file)))
+    errors = []
     for issue in issues:
         issue = box.Box(issue)
-        create(issue, arguments.remote)
+        if issue.get('skip', False):
+            print(f'skipping "{issue.title}"')
+        ok = create(issue, arguments.remote)
+        if not ok:
+            errors.append(issue)
 
     print()
     print(f'total of {len(issues)} issues')
+    print(f'total errors: {len(errors)}')
+    for error in errors:
+        show(error, file=sys.stderr)
 
 main()
-
-
-
-
