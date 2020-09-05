@@ -1,3 +1,4 @@
+# this is Docker file for haarcuba/workstation:*
 FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -23,3 +24,5 @@ RUN make docker-packages
 RUN make neovim 
 RUN make tmux
 RUN make zsh
+
+CMD bash -c 'cd /here; vim'
