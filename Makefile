@@ -1,8 +1,11 @@
 all: packages bash neovim tmux lab zsh
-.PHONY: packages sudo bash vim tmux zsh lab
+.PHONY: packages sudo bash vim tmux zsh lab neovim
 
 packages:
-	sudo apt install vim-gtk neovim build-essential htop mc openssh-server tmux arandr netcat-openbsd zsh ctags
+	sudo apt-get install -y vim-gtk neovim build-essential htop mc openssh-server tmux arandr netcat-openbsd zsh ctags curl
+
+docker-packages:
+	sudo apt-get install -y  neovim build-essential htop mc  tmux arandr netcat-openbsd zsh ctags curl git
 
 lab:
 	sudo cp lab/lab /usr/local/bin/lab

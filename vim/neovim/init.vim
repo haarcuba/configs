@@ -49,3 +49,4 @@ map <C-K> :cp<CR>
 :inoremap jj <Esc>
 let g:auto_save = 1  " enable AutoSave on Vim startup
 colorscheme gruvbox
+set clipboard=unnamedplus
