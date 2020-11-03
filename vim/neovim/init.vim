@@ -22,17 +22,19 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'leafgarland/typescript-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'morhetz/gruvbox'
 Plug 'davidhalter/jedi-vim'
+Plug 'aklt/plantuml-syntax'
 call plug#end()
 
+let g:jedi#auto_initialization=0
 let g:jedi#popup_on_dot=0
 
 let g:ycm_auto_trigger=0
 "let g:ycm_autoclose_preview_window_after_insertion=1
-let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_min_num_of_chars_for_completion=1000
+"let g:ycm_autoclose_preview_window_after_completion=1
+"let g:ycm_min_num_of_chars_for_completion=1000
 
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
