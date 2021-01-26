@@ -38,6 +38,9 @@ cinnamon-config:
 
 tmux:
 	cp tmux/.tmux.conf ~/
+	mkdir -p ~/.tmux/plugins
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	cat tmux/README.md
 
 tty-based-pinentry:
 	sudo apt-get install pinentry-tty -y
