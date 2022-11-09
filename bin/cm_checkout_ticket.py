@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import argparse
+import pprint
 import re
 import subprocess
 import logging
@@ -25,6 +26,7 @@ def main():
     process = run(f"gh pr list --search '{arguments.search_string}'", stdout=subprocess.PIPE, text=True)
     lines = process.stdout.split('\n')
     if len(lines) != 2:
+        pprint.pprint(lines)
         raise Exception(f'too many/not enough search results: {lines}')
 
     pr_number = lines[0].split()[0]
