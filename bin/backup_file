@@ -1,0 +1,6 @@
+#!/bin/bash
+
+FILE=$1
+source ~/haarcuba_aws
+
+aws s3 cp $FILE s3://ykbackup/$FILE
