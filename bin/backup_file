@@ -4,3 +4,15 @@ FILE=$1
 source ~/haarcuba_aws
 
 aws s3 cp $FILE s3://ykbackup/$FILE
+
+exitCode=$?
+
+if [[ "$exitCode" == 0 ]]; then
+    md5sum=$(md5sum $FILE)
+    subject="OK $(hostname) $0 md5=$md5sum"
+else
+    subject="ERROR $exitCode $(hostname) $0"
+fi
+
+echo "$(hostname)" | mutt -s "$subject"  haarcuba@gmail.com
+alfred "$subject: $(hostname)"
