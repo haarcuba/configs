@@ -24,7 +24,7 @@ def main():
     run(f'git checkout -b {temporary_branch}', silent=True)
     run(f"git merge origin/master -m 'MATER-DIFF AUTOMERGE'", silent=True)
     delegated_arguments = ' '.join(arguments)
-    run(f'git diff origin/master..HEAD {delegated_arguments}')
+    run(f'git diff --src-prefix= --dst-prefix= origin/master..HEAD {delegated_arguments}')
     run(f'git checkout {starting_branch}', silent=True)
     run(f'git branch -D {temporary_branch}', silent=True)
 
