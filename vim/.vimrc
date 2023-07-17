@@ -7,7 +7,11 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
-Plug '907th/vim-auto-save'
+Plug 'vim-scripts/vim-auto-save'
+Plug 'scrooloose/nerdcommenter'
+Plug 'morhetz/gruvbox'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 
@@ -36,7 +40,7 @@ set termencoding=utf-8
 " vim: set ft=vim :
 
 colors blackboard
-set tabstop=4
+set tabstop=2
 set shiftwidth=4
 set hlsearch
 set smartindent
@@ -50,3 +54,8 @@ set laststatus=2
 set noswapfile
 filetype plugin indent on
 :inoremap jj <Esc>
+map <C-F> :Files<CR>
+map <C-B> :Buffers<CR>
+map <C-L> :Lines<CR>
+colorscheme desert
+let g:auto_save = 1  " enable AutoSave on Vim startup
