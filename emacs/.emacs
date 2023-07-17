@@ -7,7 +7,9 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
- '(custom-enabled-themes '(deeper-blue)))
+ '(custom-enabled-themes '(deeper-blue))
+ '(org-agenda-files '("~/work/bigboard/bigboard.org"))
+ '(package-selected-packages '(company cmake-mode org-roam evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -24,8 +26,8 @@
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (setq package-enable-at-startup nil)
 (package-initialize) 
-(require 'evil)
-(evil-mode t)
+;;(require 'evil)
+;;(evil-mode t)
 
-
+(setq org-directory (getenv "HOME/Org"))
 (setq org-default-notes-file (concat org-directory "/notes.org"))
