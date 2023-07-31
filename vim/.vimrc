@@ -57,5 +57,6 @@ filetype plugin indent on
 map <C-F> :Files<CR>
 map <C-B> :Buffers<CR>
 map <C-L> :Lines<CR>
-colorscheme desert
+colorscheme gruvbox
 let g:auto_save = 1  " enable AutoSave on Vim startup
+runtime ftplugin/man.vim
