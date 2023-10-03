@@ -29,6 +29,7 @@ Plug 'morhetz/gruvbox'
 Plug 'davidhalter/jedi-vim'
 Plug 'aklt/plantuml-syntax'
 Plug 'github/copilot.vim'
+Plug 'fidian/hexmode'
 call plug#end()
 
 let g:jedi#auto_initialization=0
