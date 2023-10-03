@@ -30,6 +30,7 @@ Plug 'davidhalter/jedi-vim'
 Plug 'aklt/plantuml-syntax'
 Plug 'github/copilot.vim'
 Plug 'fidian/hexmode'
+Plug 'chrisbra/unicode.vim'
 call plug#end()
 
 let g:jedi#auto_initialization=0

@@ -9,7 +9,7 @@ def install_packages
 end
 
 def ubuntu_packages
-  sh "#{sudo} apt-get install -y git vim-gtk neovim build-essential htop mc openssh-server tmux arandr netcat-openbsd zsh exuberant-ctags curl python-is-python3"
+  sh "#{sudo} apt-get install -y git neovim build-essential htop mc openssh-server tmux arandr netcat-openbsd zsh exuberant-ctags curl python-is-python3"
 end
 
 def fedora_packages
