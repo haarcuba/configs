@@ -108,6 +108,7 @@ alias vi='nvim'
 alias remaster-git='git branch -f master origin/master'
 export PATH=$PATH:$HOME/programs/bin
 export PATH=~/go/bin:$PATH
+export EDITOR='vim'
 bindkey -v
 
 export VIMCONFIG=~/.config/nvim
