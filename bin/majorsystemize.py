@@ -19,6 +19,7 @@ def major_system(char):
 
 
 parser = argparse.ArgumentParser(description='read input line by line, turn digits into major system characters')
+parser.add_argument('-u', '--uppercase', help='output uppercase string', action='store_true')
 arguments = parser.parse_args()
 
 for line in sys.stdin:
@@ -28,5 +29,8 @@ for line in sys.stdin:
             new_line += major_system(char)
         else:
             new_line += char
+
+    if arguments.uppercase:
+        new_line = new_line.upper()
 
     sys.stdout.write(new_line)

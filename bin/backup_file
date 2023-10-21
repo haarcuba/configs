@@ -15,4 +15,4 @@ else
 fi
 
 echo "$(hostname)" | mutt -s "$subject"  haarcuba@gmail.com
-alfred "$subject: $(hostname)"
+alfred "$subject: $(hostname)" &
