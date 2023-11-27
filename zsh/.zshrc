@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/$USER/.oh-my-zsh"
+export ZSH="/home/$USER/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -63,6 +63,9 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  poetry
+  pip
+  dnf
   git
   kubectl
   docker
@@ -83,7 +86,7 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
@@ -105,14 +108,13 @@ alias mc='mc -S /usr/share/mc/skins/dark.ini'
 alias ltr='ls -ltr'
 alias vim='nvim'
 alias vi='nvim'
-alias remaster-git='git branch -f master origin/master'
-export PATH=$PATH:$HOME/programs/bin
+export PATH=$PATH:$HOME/.local/bin
 export PATH=~/go/bin:$PATH
-export EDITOR='vim'
-bindkey -v
+export PATH=~/bin:$PATH
 
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
+export EDITOR='nvim'
 
 path+=("$VIMDATA/plugged/fzf/bin")
 
@@ -122,4 +124,49 @@ _fixDisplay() {
 
 _loadVirtualEnvironment() {
      source ~/venvs/${PWD:t}_python/bin/activate
+}
+
+_configureGitHaarcuba() {
+    git config user.email haarcuba@gmail.com
+    git config user.name "Yoav Kleinberger"
+}
+
+function yaml_validate {
+  python -c 'import sys, yaml, json; yaml.safe_load(sys.stdin.read())'
+}
+
+function yaml2json {
+  python -c 'import sys, yaml, json; print(json.dumps(yaml.safe_load(sys.stdin.read())))'
+}
+
+function yaml2json_pretty {
+  python -c 'import sys, yaml, json; print(json.dumps(yaml.safe_load(sys.stdin.read()), indent=2, sort_keys=False))'
+}
+
+function json_validate {
+  python -c 'import sys, yaml, json; json.loads(sys.stdin.read())'
+}
+
+function json2yaml {
+  python -c 'import sys, yaml, json; print(yaml.dump(json.loads(sys.stdin.read())))'
+}
+
+bindkey -v
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias zik='firefox -P zik'
+
+function _ymainify {
+    source ~/main/bin/activate
+    rehash
+}
+
+function _load_heroku {
+    export PATH=$HOME/cli-heroku/bin:$PATH
+    rehash
+}
+
+function nvim {
+    zsh -c "source ~/main/bin/activate && /usr/bin/nvim $@"
 }
