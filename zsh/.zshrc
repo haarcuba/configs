@@ -157,10 +157,6 @@ bindkey -v
 
 alias zik='firefox -P zik'
 
-function _ymainify {
-    source ~/main/bin/activate
-    rehash
-}
 
 function _load_heroku {
     export PATH=$HOME/cli-heroku/bin:$PATH
@@ -168,5 +164,5 @@ function _load_heroku {
 }
 
 function nvim {
-    zsh -c "source ~/main/bin/activate && /usr/bin/nvim $@"
+    zsh -c "source ~/neovim_venv/bin/activate && /usr/bin/nvim $@"
 }
