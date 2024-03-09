@@ -22,9 +22,8 @@ Plug 'vim-scripts/vim-auto-save'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdcommenter'
 Plug 'leafgarland/typescript-vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-"Plug 'Valloric/YouCompleteMe'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
 Plug 'davidhalter/jedi-vim'
 Plug 'aklt/plantuml-syntax'
@@ -32,6 +31,14 @@ Plug 'github/copilot.vim'
 Plug 'fidian/hexmode'
 Plug 'chrisbra/unicode.vim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'stephpy/vim-yaml'
+Plug 'pedrohdz/vim-yaml-folds'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+
 call plug#end()
 
 let g:jedi#auto_initialization=0
@@ -47,11 +54,15 @@ let g:ycm_auto_trigger=0
 "set statusline+=%*
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
+"
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-
-map <C-F> :Files<CR>
-map <C-B> :Buffers<CR>
-map <C-L> :Lines<CR>
+map <C-F> :Telescope find_files<CR>
+map <C-B> :Telescope buffers<CR>
+map <C-L> :Telescope live_grep<CR>
 map <C-J> :cn<CR>
 map <C-K> :cp<CR>
 :tnoremap <ESC> <C-\><C-n>

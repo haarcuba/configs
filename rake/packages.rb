@@ -9,7 +9,7 @@ def install_packages
 end
 
 def ubuntu_packages
-  sh "#{sudo} apt-get install -y diodon git neovim build-essential htop mc openssh-server tmux arandr netcat-openbsd zsh exuberant-ctags curl python-is-python3 python3-pip python3-venv docker.io docker-buildx"
+  sh "#{sudo} apt-get install -y diodon git neovim build-essential htop mc openssh-server tmux arandr netcat-openbsd zsh exuberant-ctags curl python-is-python3 python3-pip python3-venv docker.io docker-buildx ripgrep cmake"
 end
 
 def fedora_packages
