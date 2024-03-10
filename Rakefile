@@ -63,10 +63,11 @@ task :tmux do
     puts File.read 'tmux/README.md'
 end
 
-desc "git aliases"
-task :git_aliases do
+desc "git configs"
+task :git_config do
   sh "git config --global alias.remaster 'branch -f master origin/master'"
+  sh "git config --global rerere.enabled true"
 end
 
 desc "run all tasks on a fresh machine"
-task :all => [ :packages, :neovim, :ohmyzsh, :tmux, :"tty-pinentry", :git_aliases ]
+task :all => [ :packages, :neovim, :ohmyzsh, :tmux, :"tty-pinentry", :git_config ]
