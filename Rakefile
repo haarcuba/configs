@@ -66,6 +66,7 @@ end
 desc "git configs"
 task :git_config do
   sh "git config --global alias.remaster 'branch -f master origin/master'"
+  sh "git config --global alias.fp 'push --force-with-lease'"
   sh "git config --global rerere.enabled true"
 end
 
