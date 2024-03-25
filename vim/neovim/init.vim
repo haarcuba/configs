@@ -38,7 +38,6 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCM
 Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-
 call plug#end()
 
 let g:jedi#auto_initialization=0
@@ -55,6 +54,9 @@ let g:ycm_auto_trigger=0
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
 "
+"
+"
+let g:markdown_folding = 1
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
@@ -70,3 +72,4 @@ map <C-K> :cp<CR>
 let g:auto_save = 1  " enable AutoSave on Vim startup
 colorscheme gruvbox
 set clipboard=unnamedplus
+command MasterDiff Git diff --src-prefix= --dst-prefix= master..HEAD
