@@ -67,9 +67,13 @@ map <C-B> :Telescope buffers<CR>
 map <C-L> :Telescope live_grep<CR>
 map <C-J> :cn<CR>
 map <C-K> :cp<CR>
+
+map <C-]> :RopeGotoDefinition<CR>
+
 :tnoremap <ESC> <C-\><C-n>
 :inoremap jj <Esc>
 let g:auto_save = 1  " enable AutoSave on Vim startup
 colorscheme gruvbox
 set clipboard=unnamedplus
 command MasterDiff Git diff --src-prefix= --dst-prefix= master..HEAD
+command PutDate put =strftime('%Y-%m-%d %a')
