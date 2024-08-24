@@ -28,6 +28,7 @@ desc "setup oh-my-zsh"
 task :ohmyzsh do
     sh "curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh"
     cp 'zsh/.zshrc', "#{Dir.home}/.zshrc" 
+    sh 'sudo chsh -s $(which zsh) $(whoami)'
 end
 
 desc "setup neovim"
@@ -68,6 +69,12 @@ task :git_config do
   sh "git config --global alias.remaster 'branch -f master origin/master'"
   sh "git config --global alias.fp 'push --force-with-lease'"
   sh "git config --global rerere.enabled true"
+end
+
+desc "make AMI"
+task :ami do
+  sh "packer init ./pinuk_ami.pkr.hcl"
+  sh "packer build ./pinuk_ami.pkr.hcl"
 end
 
 desc "run all tasks on a fresh machine"

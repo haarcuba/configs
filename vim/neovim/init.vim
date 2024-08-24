@@ -39,6 +39,7 @@ Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'andreshazard/vim-logreview'
 Plug 'mhinz/vim-rfc'
+Plug 'jvirtanen/vim-hcl'
 
 call plug#end()
 
