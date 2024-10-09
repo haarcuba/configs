@@ -6,6 +6,8 @@ def install_packages
   when :fedora
     fedora_packages()
   end
+
+  sh "curl -LsSf https://astral.sh/uv/install.sh | sh"
 end
 
 def ubuntu_packages

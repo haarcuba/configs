@@ -79,4 +79,5 @@ let g:auto_save = 1  " enable AutoSave on Vim startup
 colorscheme gruvbox
 set clipboard=unnamedplus
 command MasterDiff Git diff --src-prefix= --dst-prefix= master..HEAD
+command MainDiff Git diff --src-prefix= --dst-prefix= main..HEAD
 command PutDate put =strftime('%Y-%m-%d %a')
