@@ -78,5 +78,10 @@ task :ami do
   sh "packer build ./pinuk_ami.pkr.hcl"
 end
 
+desc "add me to the docker group"
+task :docker_group do
+  sh 'sudo usermod -aG docker $(whoami)'
+end
+
 desc "run all tasks on a fresh machine"
 task :all => [ :packages, :neovim, :ohmyzsh, :tmux, :"tty-pinentry", :git_config ]
