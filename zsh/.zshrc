@@ -8,7 +8,7 @@ export ZSH="/home/$USER/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="haarcuba"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -116,7 +116,6 @@ export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
 export EDITOR='nvim'
 
-path+=("$VIMDATA/plugged/fzf/bin")
 
 _fixDisplay() {
     export DISPLAY=:0.0
@@ -153,7 +152,8 @@ function json2yaml {
 
 bindkey -v
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 
 alias zik='firefox -P zik'
 

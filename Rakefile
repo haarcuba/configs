@@ -29,6 +29,7 @@ task :ohmyzsh do
     sh "curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh"
     cp 'zsh/.zshrc', "#{Dir.home}/.zshrc" 
     sh 'sudo chsh -s $(which zsh) $(whoami)'
+    cp  'zsh/haarcuba.zsh-theme', "#{Dir.home}/.oh-my-zsh/themes/"
 end
 
 desc "setup neovim"
