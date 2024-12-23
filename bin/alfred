@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+set -x
+bot_telegram.py alfred send "$@"
+
