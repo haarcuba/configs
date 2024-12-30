@@ -166,3 +166,7 @@ function _load_heroku {
 function nvim {
     zsh -c "source ~/neovim_venv/bin/activate && /usr/bin/nvim $@"
 }
+
+function githooks_setup () {
+        cp ~/pre-push .git/hooks/pre-push
+}

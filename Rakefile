@@ -83,5 +83,10 @@ task :docker_group do
   sh 'sudo usermod -aG docker $(whoami)'
 end
 
+desc "setup prepush script"
+task :prepsush do
+  cp "pre-push", Dir.home
+end
+
 desc "run all tasks on a fresh machine"
-task :all => [ :packages, :neovim, :ohmyzsh, :tmux, :"tty-pinentry", :git_config ]
+task :all => [ :packages, :neovim, :ohmyzsh, :tmux, :"tty-pinentry", :git_config, :prepush ]
