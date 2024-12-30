@@ -155,7 +155,6 @@ bindkey -v
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
-alias zik='firefox -P zik'
 
 
 function _load_heroku {
@@ -170,3 +169,5 @@ function nvim {
 function githooks_setup () {
         cp ~/pre-push .git/hooks/pre-push
 }
+
+alias prepush=./.git/hooks/pre-push
