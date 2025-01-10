@@ -88,5 +88,13 @@ task :prepsush do
   cp "pre-push", Dir.home
 end
 
+desc "configure ptpython"
+task :ptpython do
+  destination_directory = "#{Dir.home}/.config/ptpython"
+  mkdir_p destination_directory
+  cp "ptpython/config.py", "#{destination_directory}/config.py"
+  cp "ptpython/sync.py", Dir.home
+end
+
 desc "run all tasks on a fresh machine"
 task :all => [ :packages, :neovim, :ohmyzsh, :tmux, :"tty-pinentry", :git_config, :prepush ]
