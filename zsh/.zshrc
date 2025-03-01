@@ -152,10 +152,8 @@ function json2yaml {
 
 bindkey -v
 
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
-
-
+source ~/key-bindings.zsh
+source ~/completion.zsh
 
 function _load_heroku {
     export PATH=$HOME/cli-heroku/bin:$PATH
