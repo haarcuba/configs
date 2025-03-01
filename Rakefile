@@ -32,6 +32,7 @@ task :ohmyzsh do
     cp 'zsh/haarcuba.zsh-theme',   "#{Dir.home}/.oh-my-zsh/themes/"
     cp 'zsh/dockerized.zsh-theme', "#{Dir.home}/.oh-my-zsh/themes/"
     cp 'zsh/key-bindings.zsh', Dir.home
+    cp 'zsh/completion.zsh', Dir.home
 end
 
 desc "setup neovim"
