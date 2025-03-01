@@ -84,7 +84,7 @@ task :docker_group do
 end
 
 desc "setup prepush script"
-task :prepsush do
+task :prepush do
   cp "pre-push", Dir.home
 end
 
@@ -94,6 +94,11 @@ task :ptpython do
   mkdir_p destination_directory
   cp "ptpython/config.py", "#{destination_directory}/config.py"
   cp "ptpython/sync.py", Dir.home
+end
+
+desc "make a workstation docker image"
+task :dockerize do
+  sh "docker build --progress=plain -t haarcuba/workstation ."
 end
 
 desc "run all tasks on a fresh machine"
