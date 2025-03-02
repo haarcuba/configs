@@ -30,3 +30,5 @@ RUN rake prepush
 WORKDIR /home/${ME_USERNAME}
 ENV USER=${ME_USERNAME}
 CMD ["/bin/zsh"]
+
+RUN nvim '+PlugInstall' '+qall'
