@@ -22,6 +22,7 @@ RUN rake git_config
 RUN rake prepush
 
 WORKDIR /root
+ENV TERM=xterm-256color
 CMD ["/bin/zsh"]
 
 RUN nvim '+PlugInstall' '+qall'
