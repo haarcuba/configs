@@ -108,6 +108,7 @@ alias mc='mc -S /usr/share/mc/skins/dark.ini'
 alias ltr='ls -ltr'
 alias vim='nvim'
 alias vi='nvim'
+alias uvvenv='source .venv/bin/activate'
 export PATH=$PATH:$HOME/.local/bin
 export PATH=~/go/bin:$PATH
 export PATH=~/bin:$PATH
