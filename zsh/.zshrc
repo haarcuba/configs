@@ -171,7 +171,5 @@ function githooks_setup () {
 
 alias prepush=./.git/hooks/pre-push
 
-function FireFox {
-    memory="$1G"
-    systemd-run --user --scope -p MemoryMax=$memory firefox
-}
+
+alias FireFox='systemd-run --user --scope -p MemoryMax=8G firefox'
