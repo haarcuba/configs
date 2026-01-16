@@ -1,0 +1,2 @@
+-- Lua configuration for NeoVim
+-- This file will be populated with Lua-based configurations later
