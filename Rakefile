@@ -38,8 +38,10 @@ end
 desc "setup neovim"
 task :neovim do
     sh "curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    mkdir_p "#{Dir.home}/.config/nvim/"
+    mkdir_p "#{Dir.home}/.config/nvim/lua"
     ln_s "#{Dir.pwd}/vim/neovim/init.vim", "#{Dir.home}/.config/nvim"
+    ln_s "#{Dir.pwd}/vim/neovim/legacy.vim", "#{Dir.home}/.config/nvim"
+    ln_s "#{Dir.pwd}/vim/neovim/config.lua", "#{Dir.home}/.config/nvim/lua"
     cp_r 'vim/.vim/colors',  "#{Dir.home}/.config/nvim"
     sh "python -m venv ~/neovim_venv"
     sh "~/neovim_venv/bin/python -m pip install neovim ropevim"
@@ -102,7 +104,7 @@ end
 
 desc "make a workstation docker image"
 task :dockerize do
-  sh "docker build --progress=plain -t haarcuba/workstation ."
+  sh "docker build --progress=plain -t haarcuba/workstation:novo ."
 end
 
 desc "run all tasks on a fresh machine"
