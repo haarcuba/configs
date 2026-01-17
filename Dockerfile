@@ -26,4 +26,4 @@ ENV TERM=xterm-256color
 CMD ["/bin/zsh"]
 
 RUN pipx install python-lsp-server
-RUN nvim '+PlugInstall' '+qall'
+RUN ~/nvim-linux-x86_64/bin/nvim '+PlugInstall' '+qall'
