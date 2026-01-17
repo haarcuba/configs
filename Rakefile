@@ -37,12 +37,22 @@ end
 
 desc "setup neovim"
 task :neovim do
+    nvim_install_dir = "#{Dir.home}/nvim-linux-x86_64"
+    unless Dir.exist?(nvim_install_dir)
+      sh "tar -xzf #{Dir.pwd}/vim/neovim/nvim-linux-x86_64.tar.gz -C #{Dir.home}"
+    else
+      puts "Neovim already installed at #{nvim_install_dir}, skipping extraction"
+    end
+
+    # Install vim-plug
     sh "curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    mkdir_p "#{Dir.home}/.config/nvim/"
-    ln_s "#{Dir.pwd}/vim/neovim/init.vim", "#{Dir.home}/.config/nvim"
+
+    # Setup config files
+    mkdir_p "#{Dir.home}/.config/nvim/lua"
+    ln_s "#{Dir.pwd}/vim/neovim/init.vim", "#{Dir.home}/.config/nvim/"
+    ln_s "#{Dir.pwd}/vim/neovim/legacy.vim", "#{Dir.home}/.config/nvim"
+    ln_s "#{Dir.pwd}/vim/neovim/config.lua", "#{Dir.home}/.config/nvim/lua"
     cp_r 'vim/.vim/colors',  "#{Dir.home}/.config/nvim"
-    sh "python -m venv ~/neovim_venv"
-    sh "~/neovim_venv/bin/python -m pip install neovim ropevim"
 end
 
 desc "make gpg use TTY for passwords instead of annoying GUI"
@@ -102,7 +112,7 @@ end
 
 desc "make a workstation docker image"
 task :dockerize do
-  sh "docker build --progress=plain -t haarcuba/workstation ."
+  sh "docker build --no-cache --progress=plain -t haarcuba/workstation:latest ."
 end
 
 desc "run all tasks on a fresh machine"

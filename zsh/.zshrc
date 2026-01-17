@@ -161,10 +161,6 @@ function _load_heroku {
     rehash
 }
 
-function nvim {
-    zsh -c "source ~/neovim_venv/bin/activate && /usr/bin/nvim $@"
-}
-
 function githooks_setup () {
         cp ~/pre-push .git/hooks/pre-push
 }
@@ -173,3 +169,4 @@ alias prepush=./.git/hooks/pre-push
 
 
 alias FireFox='systemd-run --user --scope -p MemoryMax=8G firefox'
+alias nvim=~/nvim-linux-x86_64/bin/nvim

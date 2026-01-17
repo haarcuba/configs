@@ -1,4 +1,4 @@
-FROM ubuntu:24.10
+FROM ubuntu:25.10
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Jerusalem
@@ -25,4 +25,5 @@ WORKDIR /root
 ENV TERM=xterm-256color
 CMD ["/bin/zsh"]
 
-RUN nvim '+PlugInstall' '+qall'
+RUN pipx install python-lsp-server
+RUN ~/nvim-linux-x86_64/bin/nvim '+PlugInstall' '+qall'

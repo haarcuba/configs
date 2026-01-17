@@ -11,11 +11,11 @@ def install_packages
 end
 
 def ubuntu_packages
-  sh "#{sudo} apt-get install -y diodon fzf git neovim build-essential htop mc openssh-server tmux arandr netcat-openbsd zsh exuberant-ctags curl python-is-python3 python3-pip python3-venv docker.io docker-buildx ripgrep cmake pipx"
+  sh "#{sudo} apt-get install -y diodon fzf git build-essential htop mc openssh-server tmux arandr netcat-openbsd zsh exuberant-ctags curl python-is-python3 python3-pip python3-venv docker.io docker-buildx ripgrep cmake pipx"
   sh "pipx ensurepath"
 end
 
 def fedora_packages
   sh "#{sudo} dnf groupinstall -y 'Development Tools'"
-  sh "#{sudo} dnf install -y neovim htop mc tmux zsh python3-pip"
+  sh "#{sudo} dnf install -y htop mc tmux zsh python3-pip"
 end
