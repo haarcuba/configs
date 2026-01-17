@@ -66,7 +66,6 @@ map <C-L> :Telescope live_grep<CR>
 map <C-J> :cn<CR>
 map <C-K> :cp<CR>
 
-" LSP goto definition will be configured in config.lua
 
 :tnoremap <ESC> <C-\><C-n>
 :inoremap jj <Esc>
