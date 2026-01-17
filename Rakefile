@@ -37,7 +37,17 @@ end
 
 desc "setup neovim"
 task :neovim do
+    nvim_install_dir = "#{Dir.home}/nvim-linux-x86_64"
+    unless Dir.exist?(nvim_install_dir)
+      sh "tar -xzf #{Dir.pwd}/vim/neovim/nvim-linux-x86_64.tar.gz -C #{Dir.home}"
+    else
+      puts "Neovim already installed at #{nvim_install_dir}, skipping extraction"
+    end
+
+    # Install vim-plug
     sh "curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+
+    # Setup config files
     mkdir_p "#{Dir.home}/.config/nvim/lua"
     ln_s "#{Dir.pwd}/vim/neovim/init.vim", "#{Dir.home}/.config/nvim/"
     ln_s "#{Dir.pwd}/vim/neovim/legacy.vim", "#{Dir.home}/.config/nvim"

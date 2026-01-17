@@ -25,4 +25,5 @@ WORKDIR /root
 ENV TERM=xterm-256color
 CMD ["/bin/zsh"]
 
+RUN pipx install python-lsp-server
 RUN nvim '+PlugInstall' '+qall'
