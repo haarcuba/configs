@@ -112,7 +112,7 @@ end
 
 desc "make a workstation docker image"
 task :dockerize do
-  sh "docker build --no-cache --progress=plain -t haarcuba/workstation:novo ."
+  sh "docker build --no-cache --progress=plain -t haarcuba/workstation:latest ."
 end
 
 desc "run all tasks on a fresh machine"
