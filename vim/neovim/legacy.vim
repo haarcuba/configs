@@ -14,7 +14,6 @@ set guicursor=
 filetype plugin on
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'python-rope/ropevim'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -25,7 +24,6 @@ Plug 'leafgarland/typescript-vim'
 "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 "Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
-Plug 'davidhalter/jedi-vim'
 Plug 'aklt/plantuml-syntax'
 Plug 'github/copilot.vim'
 Plug 'fidian/hexmode'
@@ -42,9 +40,6 @@ Plug 'mhinz/vim-rfc'
 Plug 'jvirtanen/vim-hcl'
 
 call plug#end()
-
-let g:jedi#auto_initialization=0
-let g:jedi#popup_on_dot=0
 
 let g:ycm_auto_trigger=0
 "let g:ycm_autoclose_preview_window_after_insertion=1
@@ -71,7 +66,7 @@ map <C-L> :Telescope live_grep<CR>
 map <C-J> :cn<CR>
 map <C-K> :cp<CR>
 
-map <C-]> :RopeGotoDefinition<CR>
+" LSP goto definition will be configured in config.lua
 
 :tnoremap <ESC> <C-\><C-n>
 :inoremap jj <Esc>
