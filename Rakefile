@@ -122,7 +122,7 @@ end
 
 desc "install latest stable node version using nvm"
 task :node => :nvm do
-  sh ". #{Dir.home}/.nvm/nvm.sh && nvm install stable && nvm use stable && nvm alias default stable"
+  sh ". #{Dir.home}/.nvm/nvm.sh && nvm install --lts && nvm use --lts"
 end
 
 desc "make a workstation docker image"
