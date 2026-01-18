@@ -20,10 +20,14 @@ RUN rake tmux
 RUN rake tty-pinentry
 RUN rake git_config
 RUN rake prepush
+RUN rake nvm
+RUN /bin/zsh -c 'source ~/.zshrc && rake node'
 
 WORKDIR /root
 ENV TERM=xterm-256color
 CMD ["/bin/zsh"]
 
 RUN pipx install python-lsp-server
+RUN /usr/bin/zsh -c 'source ~/.zshrc && npm install -g typescript typescript-language-server'
 RUN ~/nvim-linux-x86_64/bin/nvim '+PlugInstall' '+qall'
+RUN /usr/bin/zsh -c 'source ~/.zshrc && omz theme set dockerized'

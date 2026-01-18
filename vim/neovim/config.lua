@@ -16,10 +16,23 @@ vim.lsp.config.pylsp = {
   }
 }
 
+vim.lsp.config.ts_ls = {
+  cmd = { 'typescript-language-server', '--stdio' },
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+  root_markers = { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' },
+}
+
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'python',
   callback = function()
     vim.lsp.enable('pylsp')
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+  callback = function()
+    vim.lsp.enable('ts_ls')
   end,
 })
 

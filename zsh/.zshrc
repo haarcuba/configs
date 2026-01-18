@@ -115,7 +115,7 @@ export PATH=~/bin:$PATH
 
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
-export EDITOR='nvim'
+export EDITOR=~/nvim-linux-x86_64/bin/nvim
 
 
 _fixDisplay() {
