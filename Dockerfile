@@ -20,6 +20,8 @@ RUN rake tmux
 RUN rake tty-pinentry
 RUN rake git_config
 RUN rake prepush
+RUN rake nvm
+RUN rake node
 
 WORKDIR /root
 ENV TERM=xterm-256color

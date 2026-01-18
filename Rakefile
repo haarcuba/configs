@@ -110,6 +110,21 @@ task :ptpython do
   cp "ptpython/sync.py", Dir.home
 end
 
+desc "install nvm (Node Version Manager)"
+task :nvm do
+  nvm_dir = "#{Dir.home}/.nvm"
+  unless Dir.exist?(nvm_dir)
+    sh "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash"
+  else
+    puts "nvm already installed at #{nvm_dir}, skipping installation"
+  end
+end
+
+desc "install latest stable node version using nvm"
+task :node => :nvm do
+  sh ". #{Dir.home}/.nvm/nvm.sh && nvm install --lts && nvm use --lts"
+end
+
 desc "make a workstation docker image"
 task :dockerize do
   sh "docker build --no-cache --progress=plain -t haarcuba/workstation:latest ."
