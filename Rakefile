@@ -122,13 +122,12 @@ end
 
 desc "install latest stable node version using nvm"
 task :node => :nvm do
-  sh ". #{Dir.home}/.nvm/nvm.sh && nvm install stable && nvm use stable"
+  sh ". #{Dir.home}/.nvm/nvm.sh && nvm install stable && nvm use stable && nvm alias default stable"
 end
 
 desc "make a workstation docker image"
 task :dockerize do
   sh "docker build --no-cache --progress=plain -t haarcuba/workstation:latest ."
-  #sh "docker build --progress=plain -t haarcuba/workstation:latest ."
 end
 
 desc "run a development workstation in a container"
