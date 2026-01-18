@@ -122,13 +122,19 @@ end
 
 desc "install latest stable node version using nvm"
 task :node => :nvm do
-  sh ". #{Dir.home}/.nvm/nvm.sh && nvm install --lts && nvm use --lts"
+  sh ". #{Dir.home}/.nvm/nvm.sh && nvm install stable && nvm use stable"
 end
 
 desc "make a workstation docker image"
 task :dockerize do
   sh "docker build --no-cache --progress=plain -t haarcuba/workstation:latest ."
+  #sh "docker build --progress=plain -t haarcuba/workstation:latest ."
+end
+
+desc "run a development workstation in a container"
+task :runws do
+  sh "docker run --rm -it -v #{Dir.pwd}:/host haarcuba/workstation:latest"
 end
 
 desc "run all tasks on a fresh machine"
-task :all => [ :packages, :neovim, :ohmyzsh, :tmux, :"tty-pinentry", :git_config, :prepush ]
+task :all => [ :packages, :neovim, :ohmyzsh, :tmux, :"tty-pinentry", :git_config, :prepush, :nvm, :node ]

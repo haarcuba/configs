@@ -29,3 +29,4 @@ CMD ["/bin/zsh"]
 
 RUN pipx install python-lsp-server
 RUN ~/nvim-linux-x86_64/bin/nvim '+PlugInstall' '+qall'
+RUN /usr/bin/zsh -c 'source ~/.zshrc && omz theme set dockerized'
