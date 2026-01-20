@@ -1,5 +1,10 @@
 FROM ubuntu:25.10
 
+ARG COMMIT_HASH=unknown
+ENV COMMIT_HASH=${COMMIT_HASH}
+
+RUN echo ${COMMIT_HASH} > /commit_hash
+
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Jerusalem
 
