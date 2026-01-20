@@ -20,7 +20,7 @@ RUN groupmod -n me ubuntu && \
     echo 'me ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER me
 
-RUN git clone --branch lua-config  https://github.com/haarcuba/configs.git ~/configs
+RUN git clone https://github.com/haarcuba/configs.git ~/configs
 
 WORKDIR /home/me/configs
 
