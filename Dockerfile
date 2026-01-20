@@ -1,5 +1,10 @@
 FROM ubuntu:25.10
 
+ARG COMMIT_HASH=unknown
+ENV COMMIT_HASH=${COMMIT_HASH}
+
+RUN echo ${COMMIT_HASH} > /commit_hash
+
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Jerusalem
 
@@ -9,9 +14,16 @@ RUN ln -fs /usr/share/zoneinfo/UTC /etc/localtime && dpkg-reconfigure -f noninte
 
 
 
-RUN git clone https://github.com/haarcuba/configs.git /configs
 
-WORKDIR /configs
+RUN groupmod -n me ubuntu && \
+    usermod -l me -d /home/me -m -s /bin/zsh ubuntu && \
+    echo 'me ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+USER me
+
+RUN git clone https://github.com/haarcuba/configs.git ~/configs
+
+WORKDIR /home/me/configs
+
 
 RUN rake packages
 RUN rake neovim
@@ -23,7 +35,6 @@ RUN rake prepush
 RUN rake nvm
 RUN /bin/zsh -c 'source ~/.zshrc && rake node'
 
-WORKDIR /root
 ENV TERM=xterm-256color
 CMD ["/bin/zsh"]
 

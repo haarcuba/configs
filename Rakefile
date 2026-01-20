@@ -44,14 +44,10 @@ task :neovim do
       puts "Neovim already installed at #{nvim_install_dir}, skipping extraction"
     end
 
-    # Install vim-plug
-    sh "curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-
-    # Setup config files
-    mkdir_p "#{Dir.home}/.config/nvim/lua"
-    ln_s "#{Dir.pwd}/vim/neovim/init.vim", "#{Dir.home}/.config/nvim/"
-    ln_s "#{Dir.pwd}/vim/neovim/legacy.vim", "#{Dir.home}/.config/nvim"
-    ln_s "#{Dir.pwd}/vim/neovim/config.lua", "#{Dir.home}/.config/nvim/lua"
+    # Setup config files (using lazy.nvim - plugins install automatically on first launch)
+    mkdir_p "#{Dir.home}/.config/nvim"
+    ln_s "#{Dir.pwd}/vim/neovim/init.lua", "#{Dir.home}/.config/nvim/"
+    ln_s "#{Dir.pwd}/vim/neovim/lua", "#{Dir.home}/.config/nvim/"
     cp_r 'vim/.vim/colors',  "#{Dir.home}/.config/nvim"
 end
 
@@ -127,12 +123,20 @@ end
 
 desc "make a workstation docker image"
 task :dockerize do
-  sh "docker build --no-cache --progress=plain -t haarcuba/workstation:latest ."
+  commit_hash = `git rev-parse HEAD`.strip.slice(0, 7)
+  sh "docker build --no-cache --progress=plain --build-arg COMMIT_HASH=#{commit_hash} -t haarcuba/workstation:latest ."
+end
+
+def random_hostname
+  hex = format('%04x', rand(0x10000))
+  "WorkStation-#{hex}"
 end
 
 desc "run a development workstation in a container"
 task :runws do
-  sh "docker run --rm -it -v #{Dir.pwd}:/host haarcuba/workstation:latest"
+  hostname = random_hostname
+  puts "Starting container with hostname: #{hostname}"
+  sh "docker run --rm -it --name #{hostname} --hostname #{hostname} -v #{Dir.pwd}:/host haarcuba/workstation:latest"
 end
 
 desc "run all tasks on a fresh machine"
