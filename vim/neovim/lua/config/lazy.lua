@@ -28,25 +28,29 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    lazy = false,
     config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "lua",
-          "python",
-          "javascript",
-          "typescript",
-          "tsx",
-          "html",
-          "css",
-          "yaml",
-          "json",
-          "markdown",
-          "vim",
-          "vimdoc",
-        },
-        highlight = { enable = true },
-        indent = { enable = true },
-      })
+      local ok, configs = pcall(require, "nvim-treesitter.configs")
+      if ok then
+        configs.setup({
+          ensure_installed = {
+            "lua",
+            "python",
+            "javascript",
+            "typescript",
+            "tsx",
+            "html",
+            "css",
+            "yaml",
+            "json",
+            "markdown",
+            "vim",
+            "vimdoc",
+          },
+          highlight = { enable = true },
+          indent = { enable = true },
+        })
+      end
     end,
   },
 
