@@ -14,6 +14,12 @@ RUN git clone https://github.com/haarcuba/configs.git /configs
 WORKDIR /configs
 
 RUN rake packages
+
+RUN useradd -m -s /bin/zsh me && \
+    chown -R me:me /configs
+USER me
+WORKDIR /configs
+
 RUN rake neovim
 RUN rake ohmyzsh
 RUN rake tmux

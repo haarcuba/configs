@@ -127,17 +127,15 @@ task :dockerize do
 end
 
 def random_hostname
-  mathematicians = File.readlines("#{__dir__}/mathematicians.txt").map(&:strip).reject(&:empty?)
-  name = mathematicians.sample.downcase.gsub('_', '-')
   hex = format('%04x', rand(0x10000))
-  "#{name}-#{hex}"
+  "#{WorkStation}-#{hex}"
 end
 
 desc "run a development workstation in a container"
 task :runws do
   hostname = random_hostname
   puts "Starting container with hostname: #{hostname}"
-  sh "docker run --rm -it --hostname #{hostname} -v #{Dir.pwd}:/host haarcuba/workstation:latest"
+  sh "docker run --rm -it --name #{hostname} --hostname #{hostname} -v #{Dir.pwd}:/host haarcuba/workstation:latest"
 end
 
 desc "run all tasks on a fresh machine"
