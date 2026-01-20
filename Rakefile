@@ -128,7 +128,7 @@ end
 
 def random_hostname
   hex = format('%04x', rand(0x10000))
-  "#{WorkStation}-#{hex}"
+  "WorkStation-#{hex}"
 end
 
 desc "run a development workstation in a container"

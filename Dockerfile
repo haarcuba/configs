@@ -9,17 +9,18 @@ RUN ln -fs /usr/share/zoneinfo/UTC /etc/localtime && dpkg-reconfigure -f noninte
 
 
 
-RUN git clone https://github.com/haarcuba/configs.git /configs
 
-WORKDIR /configs
+RUN groupmod -n me ubuntu && \
+    usermod -l me -d /home/me -m -s /bin/zsh ubuntu && \
+    echo 'me ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+USER me
+
+RUN git clone --branch lua-config  https://github.com/haarcuba/configs.git ~/configs
+
+WORKDIR /home/me/configs
+
 
 RUN rake packages
-
-RUN useradd -m -s /bin/zsh me && \
-    chown -R me:me /configs
-USER me
-WORKDIR /configs
-
 RUN rake neovim
 RUN rake ohmyzsh
 RUN rake tmux
@@ -29,7 +30,6 @@ RUN rake prepush
 RUN rake nvm
 RUN /bin/zsh -c 'source ~/.zshrc && rake node'
 
-WORKDIR /root
 ENV TERM=xterm-256color
 CMD ["/bin/zsh"]
 
