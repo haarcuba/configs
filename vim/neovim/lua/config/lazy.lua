@@ -25,17 +25,31 @@ return {
   },
 
   -- Treesitter (syntax highlighting)
+  -- Pinned to last version before tree-sitter CLI was required
   {
     "nvim-treesitter/nvim-treesitter",
-    build = function()
-      -- Install parsers on build
-      local parsers = { "lua", "python", "javascript", "typescript", "tsx", "html", "css", "yaml", "json", "markdown", "vim", "vimdoc" }
-      for _, parser in ipairs(parsers) do
-        vim.cmd("TSInstall " .. parser)
-      end
-    end,
+    commit = "cbd5a533e6ef49c5a43672f59562f5e4e5e4d2c0",
+    build = ":TSUpdate",
     lazy = false,
     config = function()
+      require("nvim-treesitter.configs").setup({
+        ensure_installed = {
+          "lua",
+          "python",
+          "javascript",
+          "typescript",
+          "tsx",
+          "html",
+          "css",
+          "yaml",
+          "json",
+          "markdown",
+          "vim",
+          "vimdoc",
+        },
+        highlight = { enable = true },
+        indent = { enable = true },
+      })
       -- Use tsx parser for JSX files (javascriptreact filetype)
       vim.treesitter.language.register("tsx", "javascriptreact")
     end,
