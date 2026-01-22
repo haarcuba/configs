@@ -25,33 +25,18 @@ return {
   },
 
   -- Treesitter (syntax highlighting)
-  -- Pinned to last version before tree-sitter CLI was required
   {
     "nvim-treesitter/nvim-treesitter",
-    commit = "cbd5a533e6ef49c5a43672f59562f5e4e5e4d2c0",
     build = ":TSUpdate",
     lazy = false,
     config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "lua",
-          "python",
-          "javascript",
-          "typescript",
-          "tsx",
-          "html",
-          "css",
-          "yaml",
-          "json",
-          "markdown",
-          "vim",
-          "vimdoc",
-        },
-        highlight = { enable = true },
-        indent = { enable = true },
+      -- Disable treesitter highlighting for JS/JSX - using vim-jsx-pretty instead
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+        callback = function()
+          vim.treesitter.stop()
+        end,
       })
-      -- Use tsx parser for JSX files (javascriptreact filetype)
-      vim.treesitter.language.register("tsx", "javascriptreact")
     end,
   },
 
@@ -66,6 +51,8 @@ return {
   { "catppuccin/nvim", name = "catppuccin" },
 
   -- Language/syntax support
+  { "pangloss/vim-javascript" },
+  { "maxmellon/vim-jsx-pretty" },
   { "leafgarland/typescript-vim" },
   { "stephpy/vim-yaml" },
   { "pedrohdz/vim-yaml-folds" },
