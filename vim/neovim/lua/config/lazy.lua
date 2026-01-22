@@ -30,27 +30,13 @@ return {
     build = ":TSUpdate",
     lazy = false,
     config = function()
-      local ok, configs = pcall(require, "nvim-treesitter.configs")
-      if ok then
-        configs.setup({
-          ensure_installed = {
-            "lua",
-            "python",
-            "javascript",
-            "typescript",
-            "tsx",
-            "html",
-            "css",
-            "yaml",
-            "json",
-            "markdown",
-            "vim",
-            "vimdoc",
-          },
-          highlight = { enable = true },
-          indent = { enable = true },
-        })
-      end
+      -- Disable treesitter highlighting for JS/JSX - using vim-jsx-pretty instead
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+        callback = function()
+          vim.treesitter.stop()
+        end,
+      })
     end,
   },
 
@@ -65,6 +51,8 @@ return {
   { "catppuccin/nvim", name = "catppuccin" },
 
   -- Language/syntax support
+  { "pangloss/vim-javascript" },
+  { "maxmellon/vim-jsx-pretty" },
   { "leafgarland/typescript-vim" },
   { "stephpy/vim-yaml" },
   { "pedrohdz/vim-yaml-folds" },
