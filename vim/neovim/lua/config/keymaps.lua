@@ -16,6 +16,12 @@ map("n", "<C-L>", "<cmd>Telescope live_grep<cr>", { desc = "Live grep" })
 map("n", "<C-J>", "<cmd>cn<cr>", { desc = "Next quickfix" })
 map("n", "<C-K>", "<cmd>cp<cr>", { desc = "Previous quickfix" })
 
+-- Diagnostics quickfix
+map("n", "<C-W><C-D>", function()
+  vim.diagnostic.setqflist()
+  vim.cmd("copen")
+end, { desc = "Diagnostics to quickfix" })
+
 -- Terminal escape
 map("t", "<ESC>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
