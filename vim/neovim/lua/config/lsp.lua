@@ -1,5 +1,6 @@
 -- LSP configuration (migrated from config.lua)
 
+-- install: pip install python-lsp-server
 vim.lsp.config.pylsp = {
   cmd = { "pylsp" },
   filetypes = { "python" },
@@ -16,6 +17,7 @@ vim.lsp.config.pylsp = {
   },
 }
 
+-- install: npm install -g typescript-language-server typescript
 vim.lsp.config.ts_ls = {
   cmd = { "typescript-language-server", "--stdio" },
   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
@@ -36,6 +38,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- install: gem install ruby-lsp
 vim.lsp.config.ruby_lsp = {
   cmd = { "ruby-lsp" },
   filetypes = { "ruby" },
