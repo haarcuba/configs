@@ -36,6 +36,19 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.lsp.config.ruby_lsp = {
+  cmd = { "ruby-lsp" },
+  filetypes = { "ruby" },
+  root_markers = { "Gemfile", ".git" },
+}
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "ruby",
+  callback = function()
+    vim.lsp.enable("ruby_lsp")
+  end,
+})
+
 -- LSP Keybindings
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
