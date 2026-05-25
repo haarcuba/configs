@@ -124,7 +124,7 @@ end
 desc "make a workstation docker image"
 task :dockerize do
   commit_hash = `git rev-parse HEAD`.strip.slice(0, 7)
-  sh "docker build --no-cache --progress=plain --build-arg COMMIT_HASH=#{commit_hash} -t haarcuba/workstation:latest ."
+  sh "docker build --no-cache --progress=plain --build-arg COMMIT_HASH=#{commit_hash} -t haarcuba/workstation:#{commit_hash} ."
 end
 
 def random_hostname
