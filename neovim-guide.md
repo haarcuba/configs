@@ -31,3 +31,9 @@ These are worth knowing about if you want to add more mappings:
 ## Related: Diagnostics
 
 Your config also maps `Ctrl-W Ctrl-D` to send all LSP **diagnostics** (errors, warnings) to the quickfix list via `vim.diagnostic.setqflist()`. Navigate them with `Ctrl-J` / `Ctrl-K`.
+
+## Tmux PWD change
+
+Use this after `:`
+
+    attach-session -t . -c /your/directory
