@@ -33,6 +33,7 @@ task :ohmyzsh do
     cp 'zsh/dockerized.zsh-theme', "#{Dir.home}/.oh-my-zsh/themes/"
     cp 'zsh/key-bindings.zsh', Dir.home
     cp 'zsh/completion.zsh', Dir.home
+    cp 'zsh/aliases.sh', Dir.home
 end
 
 desc "setup neovim"
@@ -88,11 +89,6 @@ task :ami do
   sh "packer build ./pinuk_ami.pkr.hcl"
 end
 
-desc "add me to the docker group"
-task :docker_group do
-  sh 'sudo usermod -aG docker $(whoami)'
-end
-
 desc "setup prepush script"
 task :prepush do
   cp "pre-push", Dir.home
@@ -124,7 +120,7 @@ end
 desc "make a workstation docker image"
 task :dockerize do
   commit_hash = `git rev-parse HEAD`.strip.slice(0, 7)
-  sh "docker build --no-cache --progress=plain --build-arg COMMIT_HASH=#{commit_hash} -t haarcuba/workstation:#{commit_hash} ."
+  sh "podman build --no-cache --progress=plain --build-arg COMMIT_HASH=#{commit_hash} -t haarcuba/workstation:#{commit_hash} ."
 end
 
 def random_hostname
@@ -136,7 +132,7 @@ desc "run a development workstation in a container"
 task :runws do
   hostname = random_hostname
   puts "Starting container with hostname: #{hostname}"
-  sh "docker run --rm -it --name #{hostname} --hostname #{hostname} -v #{Dir.pwd}:/host haarcuba/workstation:latest"
+  sh "podman run --rm -it --name #{hostname} --hostname #{hostname} -v #{Dir.pwd}:/host haarcuba/workstation:latest"
 end
 
 desc "run all tasks on a fresh machine"

@@ -104,11 +104,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-alias mc='mc -S /usr/share/mc/skins/dark.ini'
-alias ltr='ls -ltr'
-alias vim='nvim'
-alias vi='nvim'
-alias uvvenv='source .venv/bin/activate'
+source ~/aliases.sh
 export PATH=$PATH:$HOME/.local/bin
 export PATH=~/go/bin:$PATH
 export PATH=~/bin:$PATH
@@ -164,9 +160,3 @@ function _load_heroku {
 function githooks_setup () {
         cp ~/pre-push .git/hooks/pre-push
 }
-
-alias prepush=./.git/hooks/pre-push
-
-
-alias FireFox='systemd-run --user --scope -p MemoryMax=8G firefox'
-alias nvim=~/nvim-linux-x86_64/bin/nvim

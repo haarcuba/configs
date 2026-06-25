@@ -14,5 +14,5 @@ else
     subject="ERROR $exitCode $(hostname) $0"
 fi
 
-echo "$(hostname)" | mutt -s "$subject"  haarcuba@gmail.com
+echo "$(hostname)" | mutt -s "$subject"  fox@foxdev.in
 alfred "$subject: $(hostname)" &
