@@ -33,7 +33,7 @@ task :ohmyzsh do
     cp 'zsh/dockerized.zsh-theme', "#{Dir.home}/.oh-my-zsh/themes/"
     cp 'zsh/key-bindings.zsh', Dir.home
     cp 'zsh/completion.zsh', Dir.home
-    cp 'zsh/aliases.sh', Dir.home
+    ln_s "#{Dir.pwd}/zsh/plugins/haarcuba", "#{Dir.home}/.oh-my-zsh/custom/plugins/"
 end
 
 desc "setup neovim"
@@ -132,7 +132,7 @@ desc "run a development workstation in a container"
 task :runws do
   hostname = random_hostname
   puts "Starting container with hostname: #{hostname}"
-  sh "podman run --rm -it --name #{hostname} --hostname #{hostname} -v #{Dir.pwd}:/host haarcuba/workstation:latest"
+  sh "podman run --rm -it --name #{hostname} --hostname #{hostname} -v #{Dir.pwd}:/host docker.io/haarcuba/workstation:latest"
 end
 
 desc "run all tasks on a fresh machine"

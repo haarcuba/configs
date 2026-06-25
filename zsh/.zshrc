@@ -63,6 +63,7 @@ ZSH_THEME="haarcuba"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  haarcuba
   poetry
   pip
   dnf
@@ -70,7 +71,6 @@ plugins=(
   kubectl
   docker
   aws
-
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -104,7 +104,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-source ~/aliases.sh
 export PATH=$PATH:$HOME/.local/bin
 export PATH=~/go/bin:$PATH
 export PATH=~/bin:$PATH
@@ -114,49 +113,9 @@ export VIMDATA=~/.local/share/nvim
 export EDITOR=~/nvim-linux-x86_64/bin/nvim
 
 
-_fixDisplay() {
-    export DISPLAY=:0.0
-}
-
-_loadVirtualEnvironment() {
-     source ~/venvs/${PWD:t}_python/bin/activate
-}
-
-_configureGitHaarcuba() {
-    git config user.email haarcuba@gmail.com
-    git config user.name "Yoav Kleinberger"
-}
-
-function yaml_validate {
-  python -c 'import sys, yaml, json; yaml.safe_load(sys.stdin.read())'
-}
-
-function yaml2json {
-  python -c 'import sys, yaml, json; print(json.dumps(yaml.safe_load(sys.stdin.read())))'
-}
-
-function yaml2json_pretty {
-  python -c 'import sys, yaml, json; print(json.dumps(yaml.safe_load(sys.stdin.read()), indent=2, sort_keys=False))'
-}
-
-function json_validate {
-  python -c 'import sys, yaml, json; json.loads(sys.stdin.read())'
-}
-
-function json2yaml {
-  python -c 'import sys, yaml, json; print(yaml.dump(json.loads(sys.stdin.read())))'
-}
 
 bindkey -v
 
 source ~/key-bindings.zsh
 source ~/completion.zsh
 
-function _load_heroku {
-    export PATH=$HOME/cli-heroku/bin:$PATH
-    rehash
-}
-
-function githooks_setup () {
-        cp ~/pre-push .git/hooks/pre-push
-}
