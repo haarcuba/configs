@@ -132,7 +132,7 @@ desc "run a development workstation in a container"
 task :runws do
   hostname = random_hostname
   puts "Starting container with hostname: #{hostname}"
-  sh "podman run --rm -it --name #{hostname} --hostname #{hostname} -v #{Dir.pwd}:/host docker.io/haarcuba/workstation:latest"
+  sh "podman run --rm -it --userns=keep-id --name #{hostname} --hostname #{hostname} -v #{Dir.pwd}:/host docker.io/haarcuba/workstation:latest"
 end
 
 desc "run all tasks on a fresh machine"
