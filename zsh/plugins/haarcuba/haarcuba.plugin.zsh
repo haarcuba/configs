@@ -5,6 +5,7 @@ alias vi='nvim'
 alias uvvenv='source .venv/bin/activate'
 alias prepush=./.git/hooks/pre-push
 alias nvim=~/nvim-linux-x86_64/bin/nvim
+alias shup=./.git/hooks/pre-push
 
 function _fixDisplay {
     export DISPLAY=:0.0
