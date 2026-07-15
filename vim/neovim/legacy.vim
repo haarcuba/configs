@@ -25,7 +25,6 @@ Plug 'leafgarland/typescript-vim'
 "Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
 Plug 'aklt/plantuml-syntax'
-Plug 'github/copilot.vim'
 Plug 'fidian/hexmode'
 Plug 'chrisbra/unicode.vim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }

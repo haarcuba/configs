@@ -60,7 +60,6 @@ return {
   { "jvirtanen/vim-hcl" },
 
   -- Utilities
-  { "github/copilot.vim" },
   { "fidian/hexmode" },
   { "chrisbra/unicode.vim" },
   { "andreshazard/vim-logreview" },
