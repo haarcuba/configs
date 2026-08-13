@@ -53,5 +53,6 @@ function new-tmux-session {
     DIRECTORY=$1
     baseName=$(basename $DIRECTORY)
     upperCase=$(echo $baseName | tr '[:lower:]' '[:upper:]')
-    echo tmux new -c $DIRECTORY -s $upperCase
+    set -x
+    tmux new -c $DIRECTORY -s $upperCase -d
 }
