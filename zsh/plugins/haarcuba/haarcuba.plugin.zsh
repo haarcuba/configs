@@ -48,3 +48,10 @@ function _load_heroku {
 function githooks_setup {
     cp ~/pre-push .git/hooks/pre-push
 }
+
+function new-tmux-session {
+    DIRECTORY=$1
+    baseName=$(basename $DIRECTORY)
+    upperCase=$(echo $baseName | tr '[:lower:]' '[:upper:]')
+    echo tmux new -c $DIRECTORY -s $upperCase
+}
