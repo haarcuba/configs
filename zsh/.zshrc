@@ -72,6 +72,8 @@ plugins=(
   docker
   aws
   podman
+  kind
+  kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
