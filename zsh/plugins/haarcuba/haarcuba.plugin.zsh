@@ -56,3 +56,7 @@ function new-tmux-session {
     set -x
     tmux new -c $DIRECTORY -s $upperCase -d
 }
+
+function inLinked() {
+    echo https://www.linkedin.com/in/yoavkl/
+}
