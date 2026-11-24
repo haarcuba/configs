@@ -34,6 +34,7 @@ task :ohmyzsh do
     cp 'zsh/key-bindings.zsh', Dir.home
     cp 'zsh/completion.zsh', Dir.home
     ln_s "#{Dir.pwd}/zsh/plugins/haarcuba", "#{Dir.home}/.oh-my-zsh/custom/plugins/"
+    ln_s "#{Dir.pwd}/zsh/plugins/claude", "#{Dir.home}/.oh-my-zsh/custom/plugins/"
 end
 
 desc "setup neovim"

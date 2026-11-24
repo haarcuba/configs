@@ -1,0 +1,182 @@
+#compdef claude
+# zsh completion for the Claude Code CLI
+
+# Session ids saved for the current directory (~/.claude/projects/<cwd with / and . as ->/*.jsonl)
+_claude_sessions() {
+  local dir=~/.claude/projects/${PWD//[\/.]/-}
+  local -a ids
+  ids=( $dir/*.jsonl(N.om:t:r) )
+  (( $#ids )) && _describe -t sessions 'session id' ids
+}
+
+_claude_models() {
+  local -a models
+  models=(
+    'fable:latest Fable model'
+    'opus:latest Opus model'
+    'sonnet:latest Sonnet model'
+    'haiku:latest Haiku model'
+    'claude-fable-5-2:Fable 5.2'
+    'claude-opus-5-5:Opus 5.5'
+    'claude-sonnet-5-5:Sonnet 5.5'
+    'claude-haiku-5-5:Haiku 5.5'
+  )
+  _describe -t models 'model' models
+}
+
+_claude_mcp() {
+  local -a cmds
+  cmds=(
+    'add:add an MCP server'
+    'add-from-claude-desktop:import MCP servers from Claude Desktop'
+    'add-json:add an MCP server from a JSON string'
+    'get:get details about an MCP server'
+    'list:list configured MCP servers'
+    'login:authenticate with an MCP server'
+    'logout:clear stored OAuth credentials for an MCP server'
+    'remove:remove an MCP server'
+    'serve:start Claude Code as an MCP server'
+    'reset-project-choices:reset approved/rejected .mcp.json servers'
+    'help:display help'
+  )
+  if (( CURRENT == 2 )); then
+    _describe -t commands 'mcp command' cmds
+  else
+    case $words[2] in
+      get|remove|login|logout)
+        local -a servers
+        servers=( ${${(f)"$(claude mcp list 2>/dev/null)"}%%:*} )
+        servers=( ${servers:#Checking*} )
+        _describe -t servers 'MCP server' servers ;;
+      add|add-json)
+        _arguments \
+          '(-s --scope)'{-s,--scope}'[configuration scope]:scope:(local user project)' \
+          '(-t --transport)'{-t,--transport}'[transport type]:transport:(stdio sse http)' \
+          '*'{-e,--env}'[environment variable]:KEY=value:' \
+          '*'{-H,--header}'[HTTP header]:header:' \
+          '*:: :_normal' ;;
+      *) _files ;;
+    esac
+  fi
+}
+
+_claude() {
+  local curcontext=$curcontext state line ret=1
+  typeset -A opt_args
+
+  local -a subcommands
+  subcommands=(
+    'agents:manage background agents'
+    'attach:open a background session in this terminal'
+    'auth:manage authentication'
+    'auto-mode:inspect or reset auto mode configuration'
+    'doctor:check the health of the installation'
+    'gateway:run the enterprise auth/telemetry gateway'
+    'import:import config from another AI coding agent'
+    'install:install the Claude Code native build'
+    'logs:print a background session'\''s recent output'
+    'mcp:configure and manage MCP servers'
+    'plugin:manage Claude Code plugins'
+    'purge:delete a project'\''s Claude Code data'
+    'respawn:restart background sessions'
+    'rm:remove a background session'
+    'setup-token:set up a long-lived authentication token'
+    'stop:stop a background session'
+    'ultrareview:cloud multi-agent code review'
+    'update:check for updates and install'
+  )
+
+  _arguments -C -S \
+    '(- *)'{-h,--help}'[display help]' \
+    '(- *)'{-v,--version}'[output the version number]' \
+    '(-p --print)'{-p,--print}'[print response and exit]' \
+    '(-c --continue -r --resume)'{-c,--continue}'[continue the most recent conversation]' \
+    '(-c --continue -r --resume)'{-r,--resume}'[resume a conversation]::session:_claude_sessions' \
+    '(-d --debug)'{-d,--debug}'[enable debug mode]::filter (e.g. hooks,mcp):' \
+    '(-n --name)'{-n,--name}'[display name for this session]:name:' \
+    '(-w --worktree)'{-w,--worktree}'[create a git worktree for this session]::worktree name:' \
+    '--model[model for the session]:model:_claude_models' \
+    '--fallback-model[fallback model]:model:_claude_models' \
+    '--effort[effort level]:level:(low medium high xhigh max)' \
+    '--permission-mode[permission mode]:mode:(acceptEdits auto bypassPermissions manual dontAsk plan)' \
+    '--permission-prompts[who answers permission prompts with --print]:target:(host none)' \
+    '--output-format[output format (with --print)]:format:(text json stream-json)' \
+    '--input-format[input format (with --print)]:format:(text stream-json)' \
+    '--json-schema[JSON schema for structured output]:schema:' \
+    '--max-budget-usd[max spend (with --print)]:amount:' \
+    '*--add-dir[more directories Claude can access]:directory:_directories' \
+    '--agent[agent for the session]:agent:' \
+    '--agents[JSON or file defining custom agents]:json or file:_files' \
+    '*--allowedTools[tools to allow]:tools:' \
+    '*--allowed-tools[tools to allow]:tools:' \
+    '*--disallowedTools[tools to deny]:tools:' \
+    '*--disallowed-tools[tools to deny]:tools:' \
+    '--tools[built-in tools to make available]:tools:' \
+    '--system-prompt[system prompt]:prompt:' \
+    '--system-prompt-file[system prompt file]:file:_files' \
+    '--append-system-prompt[append to the system prompt]:prompt:' \
+    '--append-system-prompt-file[append file to the system prompt]:file:_files' \
+    '*--mcp-config[load MCP servers from JSON files or strings]:config:_files' \
+    '--strict-mcp-config[only use MCP servers from --mcp-config]' \
+    '--settings[settings file or JSON]:file or json:_files' \
+    '--setting-sources[setting sources to load]:sources:_sequence compadd - user project local' \
+    '*--plugin-dir[load a plugin from a directory or .zip]:path:_files' \
+    '*--plugin-url[fetch a plugin .zip from a URL]:url:_urls' \
+    '--session-id[use a specific session id]:uuid:' \
+    '--fork-session[new session id when resuming]' \
+    '--from-pr[resume a session linked to a PR]::PR number or URL:' \
+    '--debug-file[write debug logs to a file]:file:_files' \
+    '--autocompact[auto-compact window size]:size (auto or tokens):' \
+    '(--bg --background)'{--bg,--background}'[start session in the background]' \
+    '--cloud[create or attach to a cloud session]::description, id or url:' \
+    '--remote-control[start with Remote Control]::name:' \
+    '--desktop[open in the Claude Desktop app]' \
+    '(--no-chrome)--chrome[turn on Claude in Chrome]' \
+    '(--chrome)--no-chrome[turn off Claude in Chrome]' \
+    '--ide[connect to IDE on startup]' \
+    '--bare[minimal mode]' \
+    '--safe-mode[start with customizations disabled]' \
+    '--restricted[restricted mode]' \
+    '--brief[turn on the SendUserMessage tool]' \
+    '--verbose[override the verbose setting]' \
+    '--dangerously-skip-permissions[bypass all permission checks]' \
+    '--allow-dangerously-skip-permissions[allow bypassing permission checks as an option]' \
+    '--disable-slash-commands[disable all skills and commands]' \
+    '--no-session-persistence[do not save sessions (with --print)]' \
+    '--include-partial-messages[include partial message chunks]' \
+    '--include-hook-events[include hook events in the stream]' \
+    '--replay-user-messages[re-emit user messages on stdout]' \
+    '--ax-screen-reader[screen-reader friendly output]' \
+    '*--betas[beta headers]:beta:' \
+    '*--file[files to download at startup]:file_id\:path:' \
+    '1: :->cmd_or_prompt' \
+    '*:: :->args' && ret=0
+
+  case $state in
+    cmd_or_prompt)
+      _describe -t commands 'claude command' subcommands && ret=0
+      ;;
+    args)
+      case $words[1] in
+        mcp) _claude_mcp && ret=0 ;;
+        plugin|plugins)
+          local -a pcmds
+          pcmds=(install uninstall enable disable list update validate marketplace configure details eval init prune tag test)
+          (( CURRENT == 2 )) && _describe -t commands 'plugin command' pcmds && ret=0 ;;
+        auth)
+          local -a acmds
+          acmds=(login logout status)
+          (( CURRENT == 2 )) && _describe -t commands 'auth command' acmds && ret=0 ;;
+        install)
+          (( CURRENT == 2 )) && _values 'target' stable latest && ret=0 ;;
+        purge) _directories && ret=0 ;;
+        respawn) _arguments '--all[restart all background sessions]' && ret=0 ;;
+        *) ;;
+      esac
+      ;;
+  esac
+
+  return ret
+}
+
+_claude "$@"

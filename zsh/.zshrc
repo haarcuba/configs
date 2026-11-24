@@ -74,6 +74,7 @@ plugins=(
   podman
   kind
   kubectl
+  claude
 )
 
 source $ZSH/oh-my-zsh.sh
